@@ -1,5 +1,4 @@
-package kr.ac.cau.mecs.lenerd.chess;
-
+package chess;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -61,17 +60,16 @@ public class ImagePanel extends JPanel {
 
 		if (image != null) {
 			/*
-			 * if image is set, draw to fill.
-			 * with aspect ratio
+			 * if image is set, draw to fill. with aspect ratio
 			 */
-			float wr = (float)getWidth() / (float)image.getWidth();
-			float hr = (float)getHeight() / (float)image.getHeight();
-			
+			float wr = (float) getWidth() / (float) image.getWidth();
+			float hr = (float) getHeight() / (float) image.getHeight();
+
 			float r = Math.min(wr, hr);
 
-			int w = (int)(image.getWidth()*r);
-			int h = (int)(image.getHeight()*r);
-			g.drawImage(image, (getWidth()-w)/2,(getHeight()-h)/2,w,h, this);
+			int w = (int) (image.getWidth() * r);
+			int h = (int) (image.getHeight() * r);
+			g.drawImage(image, (getWidth() - w) / 2, (getHeight() - h) / 2, w, h, this);
 		}
 	}
 }
