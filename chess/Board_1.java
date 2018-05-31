@@ -13,12 +13,11 @@ public class Board_1 {
 	public boolean p2_catchable[][] = new boolean[8][8];
 
 	void Move(Position PiecePosition, Position dest) {
-		Position tempPosition = null;
-		
+		board[dest.getX()][dest.getY()] = board[PiecePosition.getX()][PiecePosition.getY()];
+		board[PiecePosition.getX()][PiecePosition.getY()] = null;
 	}
 
 	Piece getPiece(int PieceX, int PieceY) {
-		Piece resultPiece = null; //Board haven't enough info yet
-		return resultPiece;
+		return board[PieceX][PieceY];
 	}
 }
