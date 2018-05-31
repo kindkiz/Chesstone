@@ -1,9 +1,19 @@
 package pieces;
+import java.util.ArrayList;
 
-public abstract class Piece extends Position {
-	private int[] howMove = new int[2];
-	public int color;
-	public boolean isAlive;
-	public int whoRU;
+import javax.swing.ImageIcon;
 
+import chess.Board_1;
+import chess.ConstDef;
+
+public abstract class Piece extends Position implements ConstDef{
+	protected int color;
+	protected int name;
+	protected ImageIcon icon;
+	
+	public int getColor() { return color; }
+	public int getName() { return name; }
+	public ImageIcon getIcon() { return icon; }
+	
+	abstract public ArrayList<Position> getMovement(Board_1 board, Position now);
 }
