@@ -11,9 +11,12 @@ import chess.ChessPieceSprite.ChessPieceSpriteType;
 
 public class Knight extends Piece{
 	
-	public Knight(int team){
-		color = team;
+	public Knight(int col){
+		color = col;
 		name = KNIGHT;
+		
+		if(color == BLACK || color == WHITE) 	team = 1;
+		else 									team = 2;
 		
 		BufferedImage img = null;
 		
@@ -35,15 +38,40 @@ public class Knight extends Piece{
         icon = new ImageIcon(img);        
 	}
 
-	public ArrayList<Position> getMovement(Board_1 board, Position now) {
+	public ArrayList<Position> getMovement(Board_1 board_1, Position now) {
 		int x = now.getX();
 		int y = now.getY();
 		
+		//different in 4 people
+		final int MAX = 8;
+		
 		ArrayList<Position> go = new ArrayList<Position>();
 		
+		go.add(new Position(x + 1, y + 2));
+		go.add(new Position(x + 1, y - 2));
+		go.add(new Position(x - 1, y + 2));
+		go.add(new Position(x - 1, y - 2));
+		go.add(new Position(x + 1, y + 2));
 		
+		go.add(new Position(x + 2, y + 1));
+		go.add(new Position(x + 2, y - 1));
+		go.add(new Position(x - 2, y + 1));
+		go.add(new Position(x - 2, y - 1));
 		
-		return null;
+		for(int i = 0; i < go.size(); i++)
+		{
+			int goX, goY;
+			goX = go.get(i).getX();
+			goY = go.get(i).getY();
+			
+			if(goX < 0 || goX >= MAX || goY < 0 || goY >= MAX)
+				go.remove(i);
+			
+			if(board_1.board[goX][goY].team == this.team)
+				go.remove(i);
+		}
+				
+		return go;
 	}
 
 

@@ -11,9 +11,12 @@ import chess.ChessPieceSprite.ChessPieceSpriteType;
 
 public class Bishop extends Piece {
 
-	public Bishop(int team){
+	public Bishop(int col){
 		color = team;
 		name = BISHOP;
+		
+		if(color == BLACK || color == WHITE) 	team = 1;
+		else 									team = 2;
 		
 		BufferedImage img = null;
 		
@@ -35,9 +38,79 @@ public class Bishop extends Piece {
         icon = new ImageIcon(img);        
 	}
 	
-	public ArrayList<Position> getMovement(Board_1 board, Position now) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Position> getMovement(Board_1 board_1, Position now) {
+		
+		int x = now.getX();
+		int y = now.getY();
+		final int MAX = 8;
+		
+		ArrayList<Position> go = new ArrayList<Position>();
+		
+		for(int i = 1, j = 1; i < MAX && j < MAX; i++, j++)
+		{
+			int goX = x + i;
+			int goY = y + j;
+			
+			if(board_1.board[goX][goY] == null)
+				go.add(new Position(goX, goY));
+			
+			else
+			{
+				if(board_1.board[goX][goY].team != team)
+					go.add(new Position(goX, goY));			
+				break;
+			}
+		}
+		
+		for(int i = 1, j = 1; i < MAX && j >= 0; i++, j--)
+		{
+			int goX = x + i;
+			int goY = y - j;
+			
+			if(board_1.board[goX][goY] == null)
+				go.add(new Position(goX, goY));
+			
+			else
+			{
+				if(board_1.board[goX][goY].team != team)
+					go.add(new Position(goX, goY));			
+				break;
+			}
+		}
+		
+		for(int i = 1, j = 1; i >= 0 && j < MAX; i--, j++)
+		{
+			int goX = x - i;
+			int goY = y + j;
+			
+			if(board_1.board[goX][goY] == null)
+				go.add(new Position(goX, goY));
+			
+			else
+			{
+				if(board_1.board[goX][goY].team != team)
+					go.add(new Position(goX, goY));			
+				break;
+			}
+		}
+		
+		for(int i = 1, j = 1; i >= 0 && j >= 0; i--, j--)
+		{
+			int goX = x - i;
+			int goY = y - j;
+			
+			if(board_1.board[goX][goY] == null)
+				go.add(new Position(goX, goY));
+			
+			else
+			{
+				if(board_1.board[goX][goY].team != team)
+					go.add(new Position(goX, goY));			
+				break;
+			}
+		}
+		
+		return go;
 	}
 
 }

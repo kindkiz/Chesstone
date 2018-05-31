@@ -10,10 +10,15 @@ import chess.ChessPieceSprite;
 import chess.ChessPieceSprite.ChessPieceSpriteType;
 
 public class Pawn extends Piece{
-
-	public Pawn(int team){
-		color = team;
+	
+	boolean isMoved;
+	public Pawn(int col){
+		color = col;
 		name = PAWN;
+		isMoved = false;
+		
+		if(color == BLACK || color == WHITE) 	team = 1;
+		else 									team = 2;
 		
 		BufferedImage img = null;
 		
@@ -34,16 +39,52 @@ public class Pawn extends Piece{
 		}
         icon = new ImageIcon(img);        
 	}
+	
+	public void moved() {
+		isMoved = true;
+	}
 
-	public ArrayList<Position> getMovement(Board_1 board, Position now) {
+	public ArrayList<Position> getMovement(Board_1 board_1, Position now) {
 		int x = now.getX();
 		int y = now.getY();
+		int dir = 0;
+		
+		//different in 4 people
+		final int MAX = 8;
+		
+		if(color == BLACK)      dir = -1;
+		else if(color == WHITE) dir = +1;
 		
 		ArrayList<Position> go = new ArrayList<Position>();
 		
+		if(board_1.board[x + 1][y + dir] != null)	
+			go.add(new Position(x + 1, y + dir));
+		if(board_1.board[x - 1][y + dir] != null)
+			go.add(new Position(x - 1, y + dir));
 		
+		for(int i = 0; i < 2; i++)
+		{
+			if(board_1.board[x][y + dir] == null)
+				go.add(new Position(x, y + dir));
+			
+			if(isMoved == true) break;
+			dir *= 2;
+		}
 		
-		return null;
+		for(int i = 0; i < go.size(); i++)
+		{
+			int goX, goY;
+			goX = go.get(i).getX();
+			goY = go.get(i).getY();
+			
+			if(goX < 0 || goX >= MAX || goY < 0 || goY >= MAX)
+				go.remove(i);
+			
+			if(board_1.board[goX][goY].team == this.team)
+				go.remove(i);
+		}
+		
+		return go;
 	}
 
 
