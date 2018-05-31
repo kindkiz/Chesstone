@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 import chess.Board_1;
 import chess.ConstDef;
 
-public abstract class Piece extends Position implements ConstDef{
+public abstract class Piece implements ConstDef{
 	protected int color;
 	protected int name;
 	protected ImageIcon icon;
