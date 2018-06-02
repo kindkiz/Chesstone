@@ -1,9 +1,6 @@
 package pieces;
 
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-
-import javax.swing.ImageIcon;
 
 import chess.Board_1;
 import chess.ChessPieceSprite;
@@ -17,8 +14,6 @@ public class King extends Piece {
 		
 		if(color == BLACK || color == WHITE) 	team = 1;
 		else 									team = 2;
-		
-		BufferedImage img = null;
 		
 		switch(color)
 		{
@@ -34,8 +29,7 @@ public class King extends Piece {
 		case(WHITE):
 			img = ChessPieceSprite.getInstace().getChessPiece(ChessPieceSpriteType.WHITE_KING);
 			break;
-		}
-        icon = new ImageIcon(img);        
+		}  
 	}
 
 	public ArrayList<Position> getMovement(Board_1 board_1, Position now) {
