@@ -50,14 +50,14 @@ public class Pawn extends Piece{
 		
 		ArrayList<Position> go = new ArrayList<Position>();
 		
-		if(board_1.board[x + 1][y + dir] != null)	
+		if(board_1.getPiece(x + 1, y + dir)!= null)	
 			go.add(new Position(x + 1, y + dir));
-		if(board_1.board[x - 1][y + dir] != null)
+		if(board_1.getPiece(x - 1, y + dir) != null)
 			go.add(new Position(x - 1, y + dir));
 		
 		for(int i = 0; i < 2; i++)
 		{
-			if(board_1.board[x][y + dir] == null)
+			if(board_1.getPiece(x,  y + dir) == null)
 				go.add(new Position(x, y + dir));
 			
 			if(isMoved == true) break;
