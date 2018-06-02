@@ -1,9 +1,6 @@
 package pieces;
 
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-
-import javax.swing.ImageIcon;
 
 import chess.Board_1;
 import chess.ChessPieceSprite;
@@ -12,15 +9,13 @@ import chess.ChessPieceSprite.ChessPieceSpriteType;
 public class Bishop extends Piece {
 
 	public Bishop(int col){
-		color = team;
+		color = col;
 		name = BISHOP;
 		
 		if(color == BLACK || color == WHITE) 	team = 1;
 		else 									team = 2;
 		
-		BufferedImage img = null;
-		
-		switch(team)
+		switch(color)
 		{
 		case(BLACK):
 			img = ChessPieceSprite.getInstace().getChessPiece(ChessPieceSpriteType.BLACK_BISHOP);
@@ -35,7 +30,6 @@ public class Bishop extends Piece {
 			img = ChessPieceSprite.getInstace().getChessPiece(ChessPieceSpriteType.WHITE_BISHOP);
 			break;
 		}
-        icon = new ImageIcon(img);        
 	}
 	
 	public ArrayList<Position> getMovement(Board_1 board_1, Position now) {
@@ -51,12 +45,12 @@ public class Bishop extends Piece {
 			int goX = x + i;
 			int goY = y + j;
 			
-			if(board_1.board[goX][goY] == null)
+			if(board_1.getPiece(goX, goY) == null)
 				go.add(new Position(goX, goY));
 			
 			else
 			{
-				if(board_1.board[goX][goY].team != team)
+				if(board_1.getPiece(goX, goY).team != team)
 					go.add(new Position(goX, goY));			
 				break;
 			}
@@ -67,12 +61,12 @@ public class Bishop extends Piece {
 			int goX = x + i;
 			int goY = y - j;
 			
-			if(board_1.board[goX][goY] == null)
+			if(board_1.getPiece(goX, goY) == null)
 				go.add(new Position(goX, goY));
 			
 			else
 			{
-				if(board_1.board[goX][goY].team != team)
+				if(board_1.getPiece(goX, goY).team != team)
 					go.add(new Position(goX, goY));			
 				break;
 			}
@@ -83,12 +77,12 @@ public class Bishop extends Piece {
 			int goX = x - i;
 			int goY = y + j;
 			
-			if(board_1.board[goX][goY] == null)
+			if(board_1.getPiece(goX, goY) == null)
 				go.add(new Position(goX, goY));
 			
 			else
 			{
-				if(board_1.board[goX][goY].team != team)
+				if(board_1.getPiece(goX, goY).team != team)
 					go.add(new Position(goX, goY));			
 				break;
 			}
@@ -99,12 +93,12 @@ public class Bishop extends Piece {
 			int goX = x - i;
 			int goY = y - j;
 			
-			if(board_1.board[goX][goY] == null)
+			if(board_1.getPiece(goX, goY) == null)
 				go.add(new Position(goX, goY));
 			
 			else
 			{
-				if(board_1.board[goX][goY].team != team)
+				if(board_1.getPiece(goX, goY).team != team)
 					go.add(new Position(goX, goY));			
 				break;
 			}

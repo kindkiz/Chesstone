@@ -1,9 +1,6 @@
 package pieces;
 
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-
-import javax.swing.ImageIcon;
 
 import chess.Board_1;
 import chess.ChessPieceSprite;
@@ -19,10 +16,7 @@ public class Pawn extends Piece{
 		
 		if(color == BLACK || color == WHITE) 	team = 1;
 		else 									team = 2;
-		
-		BufferedImage img = null;
-		
-		switch(team)
+		switch(color)
 		{
 		case(BLACK):
 			img = ChessPieceSprite.getInstace().getChessPiece(ChessPieceSpriteType.BLACK_PAWN);
@@ -36,8 +30,7 @@ public class Pawn extends Piece{
 		case(WHITE):
 			img = ChessPieceSprite.getInstace().getChessPiece(ChessPieceSpriteType.WHITE_PAWN);
 			break;
-		}
-        icon = new ImageIcon(img);        
+		} 
 	}
 	
 	public void moved() {
@@ -57,14 +50,14 @@ public class Pawn extends Piece{
 		
 		ArrayList<Position> go = new ArrayList<Position>();
 		
-		if(board_1.board[x + 1][y + dir] != null)	
+		if(board_1.getPiece(x + 1, y + dir)!= null)	
 			go.add(new Position(x + 1, y + dir));
-		if(board_1.board[x - 1][y + dir] != null)
+		if(board_1.getPiece(x - 1, y + dir) != null)
 			go.add(new Position(x - 1, y + dir));
 		
 		for(int i = 0; i < 2; i++)
 		{
-			if(board_1.board[x][y + dir] == null)
+			if(board_1.getPiece(x,  y + dir) == null)
 				go.add(new Position(x, y + dir));
 			
 			if(isMoved == true) break;
@@ -80,7 +73,7 @@ public class Pawn extends Piece{
 			if(goX < 0 || goX >= MAX || goY < 0 || goY >= MAX)
 				go.remove(i);
 			
-			if(board_1.board[goX][goY].team == this.team)
+			if(board_1.getPiece(goX, goY).team == this.team)
 				go.remove(i);
 		}
 		

@@ -1,9 +1,6 @@
 package pieces;
 
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-
-import javax.swing.ImageIcon;
 
 import chess.Board_1;
 import chess.ChessPieceSprite;
@@ -15,14 +12,10 @@ public class Queen extends Piece {
 		color = col;
 		name = QUEEN;
 
-		if (color == BLACK || color == WHITE)
-			team = 1;
-		else
-			team = 2;
+		if (color == BLACK || color == WHITE)	team = 1;
+		else									team = 2;
 
-		BufferedImage img = null;
-
-		switch (team) {
+		switch (color) {
 		case (BLACK):
 			img = ChessPieceSprite.getInstace().getChessPiece(ChessPieceSpriteType.BLACK_QUEEN);
 			break;
@@ -36,7 +29,6 @@ public class Queen extends Piece {
 			img = ChessPieceSprite.getInstace().getChessPiece(ChessPieceSpriteType.WHITE_QUEEN);
 			break;
 		}
-		icon = new ImageIcon(img);
 	}
 
 	public ArrayList<Position> getMovement(Board_1 board_1, Position now) {
@@ -52,11 +44,11 @@ public class Queen extends Piece {
 			int goX = x + i;
 			int goY = y;
 
-			if (board_1.board[goX][goY] == null)
+			if (board_1.getPiece(goX, goY) == null)
 				go.add(new Position(goX, goY));
 
 			else {
-				if (board_1.board[goX][goY].team != team)
+				if (board_1.getPiece(goX, goY).team != team)
 					go.add(new Position(goX, goY));
 				break;
 			}
@@ -66,11 +58,11 @@ public class Queen extends Piece {
 			int goX = x - i;
 			int goY = y;
 
-			if (board_1.board[goX][goY] == null)
+			if (board_1.getPiece(goX, goY) == null)
 				go.add(new Position(goX, goY));
 
 			else {
-				if (board_1.board[goX][goY].team != team)
+				if (board_1.getPiece(goX, goY).team != team)
 					go.add(new Position(goX, goY));
 				break;
 			}
@@ -80,11 +72,11 @@ public class Queen extends Piece {
 			int goX = x;
 			int goY = y + i;
 
-			if (board_1.board[goX][goY] == null)
+			if (board_1.getPiece(goX, goY) == null)
 				go.add(new Position(goX, goY));
 
 			else {
-				if (board_1.board[goX][goY].team != team)
+				if (board_1.getPiece(goX, goY).team != team)
 					go.add(new Position(goX, goY));
 				break;
 			}
@@ -94,11 +86,11 @@ public class Queen extends Piece {
 			int goX = x;
 			int goY = y - i;
 
-			if (board_1.board[goX][goY] == null)
+			if (board_1.getPiece(goX, goY) == null)
 				go.add(new Position(goX, goY));
 
 			else {
-				if (board_1.board[goX][goY].team != team)
+				if (board_1.getPiece(goX, goY).team != team)
 					go.add(new Position(goX, goY));
 				break;
 			}
@@ -108,11 +100,11 @@ public class Queen extends Piece {
 			int goX = x + i;
 			int goY = y + j;
 
-			if (board_1.board[goX][goY] == null)
+			if (board_1.getPiece(goX, goY) == null)
 				go.add(new Position(goX, goY));
 
 			else {
-				if (board_1.board[goX][goY].team != team)
+				if (board_1.getPiece(goX, goY).team != team)
 					go.add(new Position(goX, goY));
 				break;
 			}
@@ -122,11 +114,11 @@ public class Queen extends Piece {
 			int goX = x + i;
 			int goY = y - j;
 
-			if (board_1.board[goX][goY] == null)
+			if (board_1.getPiece(goX, goY) == null)
 				go.add(new Position(goX, goY));
 
 			else {
-				if (board_1.board[goX][goY].team != team)
+				if (board_1.getPiece(goX, goY).team != team)
 					go.add(new Position(goX, goY));
 				break;
 			}
@@ -136,11 +128,11 @@ public class Queen extends Piece {
 			int goX = x - i;
 			int goY = y + j;
 
-			if (board_1.board[goX][goY] == null)
+			if (board_1.getPiece(goX, goY) == null)
 				go.add(new Position(goX, goY));
 
 			else {
-				if (board_1.board[goX][goY].team != team)
+				if (board_1.getPiece(goX, goY).team != team)
 					go.add(new Position(goX, goY));
 				break;
 			}
@@ -150,11 +142,11 @@ public class Queen extends Piece {
 			int goX = x - i;
 			int goY = y - j;
 
-			if (board_1.board[goX][goY] == null)
+			if (board_1.getPiece(goX, goY) == null)
 				go.add(new Position(goX, goY));
 
 			else {
-				if (board_1.board[goX][goY].team != team)
+				if (board_1.getPiece(goX, goY).team != team)
 					go.add(new Position(goX, goY));
 				break;
 			}

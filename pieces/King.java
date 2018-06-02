@@ -1,9 +1,6 @@
 package pieces;
 
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-
-import javax.swing.ImageIcon;
 
 import chess.Board_1;
 import chess.ChessPieceSprite;
@@ -18,9 +15,7 @@ public class King extends Piece {
 		if(color == BLACK || color == WHITE) 	team = 1;
 		else 									team = 2;
 		
-		BufferedImage img = null;
-		
-		switch(team)
+		switch(color)
 		{
 		case(BLACK):
 			img = ChessPieceSprite.getInstace().getChessPiece(ChessPieceSpriteType.BLACK_KING);
@@ -34,8 +29,7 @@ public class King extends Piece {
 		case(WHITE):
 			img = ChessPieceSprite.getInstace().getChessPiece(ChessPieceSpriteType.WHITE_KING);
 			break;
-		}
-        icon = new ImageIcon(img);        
+		}  
 	}
 
 	public ArrayList<Position> getMovement(Board_1 board_1, Position now) {
@@ -67,7 +61,7 @@ public class King extends Piece {
 			if(goX < 0 || goX >= MAX || goY < 0 || goY >= MAX)
 				go.remove(i);
 			
-			if(board_1.board[goX][goY].team == this.team)
+			if(board_1.getPiece(goX, goY).team == this.team)
 				go.remove(i);
 		}
 		
