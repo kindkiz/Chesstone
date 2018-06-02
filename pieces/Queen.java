@@ -15,14 +15,12 @@ public class Queen extends Piece {
 		color = col;
 		name = QUEEN;
 
-		if (color == BLACK || color == WHITE)
-			team = 1;
-		else
-			team = 2;
+		if (color == BLACK || color == WHITE)	team = 1;
+		else									team = 2;
 
 		BufferedImage img = null;
 
-		switch (team) {
+		switch (color) {
 		case (BLACK):
 			img = ChessPieceSprite.getInstace().getChessPiece(ChessPieceSpriteType.BLACK_QUEEN);
 			break;

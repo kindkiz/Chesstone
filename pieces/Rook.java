@@ -20,19 +20,19 @@ public class Rook extends Piece {
 		
 		BufferedImage img = null;
 		
-		switch(team)
+		switch(color)
 		{
 		case(BLACK):
-			img = ChessPieceSprite.getInstace().getChessPiece(ChessPieceSpriteType.BLACK_ROOK);
+			img = ChessPieceSprite.getInstace().getChessPiece(ChessPieceSpriteType.BLACK_LOOK);
 			break;
 		case(RED):
-			img = ChessPieceSprite.getInstace().getChessPiece(ChessPieceSpriteType.RED_ROOK);
+			img = ChessPieceSprite.getInstace().getChessPiece(ChessPieceSpriteType.RED_LOOK);
 			break;
 		case(GREEN):
-			img = ChessPieceSprite.getInstace().getChessPiece(ChessPieceSpriteType.GREEN_ROOK);
+			img = ChessPieceSprite.getInstace().getChessPiece(ChessPieceSpriteType.GREEN_LOOK);
 			break;
 		case(WHITE):
-			img = ChessPieceSprite.getInstace().getChessPiece(ChessPieceSpriteType.WHITE_ROOK);
+			img = ChessPieceSprite.getInstace().getChessPiece(ChessPieceSpriteType.WHITE_LOOK);
 			break;
 		}
         icon = new ImageIcon(img);        

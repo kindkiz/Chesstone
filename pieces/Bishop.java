@@ -12,7 +12,7 @@ import chess.ChessPieceSprite.ChessPieceSpriteType;
 public class Bishop extends Piece {
 
 	public Bishop(int col){
-		color = team;
+		color = col;
 		name = BISHOP;
 		
 		if(color == BLACK || color == WHITE) 	team = 1;
@@ -20,7 +20,7 @@ public class Bishop extends Piece {
 		
 		BufferedImage img = null;
 		
-		switch(team)
+		switch(color)
 		{
 		case(BLACK):
 			img = ChessPieceSprite.getInstace().getChessPiece(ChessPieceSpriteType.BLACK_BISHOP);

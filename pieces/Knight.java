@@ -20,7 +20,7 @@ public class Knight extends Piece{
 		
 		BufferedImage img = null;
 		
-		switch(team)
+		switch(color)
 		{
 		case(BLACK):
 			img = ChessPieceSprite.getInstace().getChessPiece(ChessPieceSpriteType.BLACK_KNIGHT);
