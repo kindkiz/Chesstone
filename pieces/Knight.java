@@ -60,7 +60,7 @@ public class Knight extends Piece{
 			if(goX < 0 || goX >= MAX || goY < 0 || goY >= MAX)
 				go.remove(i);
 			
-			if(board_1.board[goX][goY].team == this.team)
+			if(board_1.getPiece(goX, goY).team == this.team)
 				go.remove(i);
 		}
 				

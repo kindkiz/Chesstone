@@ -46,12 +46,12 @@ public class Rook extends Piece {
 			int goX = x + i;		
 			int goY = y;
 			
-			if(board_1.board[goX][goY] == null)
+			if(board_1.getPiece(goX, goY) == null)
 				go.add(new Position(goX, goY));
 			
 			else
 			{
-				if(board_1.board[goX][goY].team != team)
+				if(board_1.getPiece(goX, goY).team != team)
 					go.add(new Position(goX, goY));			
 				break;
 			}
@@ -62,12 +62,12 @@ public class Rook extends Piece {
 			int goX = x - i;		
 			int goY = y;
 			
-			if(board_1.board[goX][goY] == null)
+			if(board_1.getPiece(goX, goY) == null)
 				go.add(new Position(goX, goY));
 			
 			else
 			{
-				if(board_1.board[goX][goY].team != team)
+				if(board_1.getPiece(goX, goY).team != team)
 					go.add(new Position(goX, goY));			
 				break;
 			}
@@ -78,12 +78,12 @@ public class Rook extends Piece {
 			int goX = x;		
 			int goY = y + i;
 			
-			if(board_1.board[goX][goY] == null)
+			if(board_1.getPiece(goX, goY) == null)
 				go.add(new Position(goX, goY));
 			
 			else
 			{
-				if(board_1.board[goX][goY].team != team)
+				if(board_1.getPiece(goX, goY).team != team)
 					go.add(new Position(goX, goY));			
 				break;
 			}
@@ -94,12 +94,12 @@ public class Rook extends Piece {
 			int goX = x;		
 			int goY = y - i;
 			
-			if(board_1.board[goX][goY] == null)
+			if(board_1.getPiece(goX, goY) == null)
 				go.add(new Position(goX, goY));
 			
 			else
 			{
-				if(board_1.board[goX][goY].team != team)
+				if(board_1.getPiece(goX, goY).team != team)
 					go.add(new Position(goX, goY));			
 				break;
 			}
