@@ -2,25 +2,28 @@ package chess;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import chess.ChessPieceSprite.ChessPieceSpriteType;
+public class GameFrame_1vs1 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-public class GameFrame_1vs1 extends JPanel {
-	final int width = 600;
-	final int height = 600;
+	final int width = 640;
+	final int height = 640;
 	JFrame gameFrame;
 	Board_1 board;
-	JButton[][] square;
-
-	public GameFrame_1vs1(Board_1 board) {
-		this.board = board;
-
+	JPanel[][] square = new JPanel[8][8];
+	JPanel chessBoard;
+	ImagePanel[][] imgPan = new ImagePanel[8][8];
+	
+	
+	public GameFrame_1vs1() {
 		gameFrame = new JFrame("Chess - 1vs1");
 		gameFrame.setSize(width, height);
 		gameFrame.setLocationRelativeTo(null);
@@ -29,11 +32,12 @@ public class GameFrame_1vs1 extends JPanel {
 		JPanel chessBoard = new JPanel();
 		chessBoard.setLayout(new GridLayout(8, 8));
 
-		JButton square[][] = new JButton[8][8];
+		board = new Board_1();
+
 		boolean painter = false;
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
-				square[i][j] = new JButton();
+				square[i][j] = new JPanel();
 				if (painter) {
 					square[i][j].setBackground(Color.ORANGE);
 					painter = false;
@@ -41,25 +45,27 @@ public class GameFrame_1vs1 extends JPanel {
 					square[i][j].setBackground(Color.YELLOW);
 					painter = true;
 				}
+				square[i][j].addMouseListener(new MouseEventHandler(board, this));
 				chessBoard.add(square[i][j]);
 			}
 			painter = painter ? false : true;
 		}
+		
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+				try {
+					imgPan[i][j] = new ImagePanel();
+					imgPan[i][j].setImage(board.getPiece(i, j).getImg());
+					imgPan[i][j].setPreferredSize(new Dimension(80, 80));
+					square[i][j].add(imgPan[i][j]);
+				} catch (NullPointerException err) {
+				}
+			}
+		}
+		
 		gameFrame.add(chessBoard, BorderLayout.CENTER);
-
 		gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		gameFrame.setVisible(true);
 	}
-
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		ImagePanel imgPan = new ImagePanel();
-		for (int i = 0; i < 8; i++) {
-			for (int j = 0; j < 8; j++) {
-				imgPan.setImage(board.getPiece(i, j).getImg());
-				square[i][j].add(imgPan);
-			}
-		}
-	}
-
+	
 }
