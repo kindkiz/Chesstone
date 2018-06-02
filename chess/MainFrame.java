@@ -28,7 +28,8 @@ public class MainFrame{
 		
 		StartBut_1vs1.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				new GameFrame_1vs1();
+				Board_1 board = new Board_1();
+				new GameFrame_1vs1(board);
 				frame.setVisible(false);
 			}
 		});
