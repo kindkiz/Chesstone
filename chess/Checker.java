@@ -57,20 +57,15 @@ public class Checker {
 		// done
 		// king을 둘러싼 8칸이 모두 아군이거나 catchable 이면 checkMate
 		// player 1
-		for (int i = -1; i <= 1; i++) 
-		{
-			for (int j = -1; j <= 1; j++) 
-			{
-				if (!(i == 0 && j == 0)) 
-				{
-					if (((0 <= WKingX + i) && (WKingX + i < 8)) && ((0 <= WKingY + i) && (WKingY + i < 8))) 
-					{
-						if ((board.getPiece(WKingX + i, WKingY + j) == null) && (!board.p2_catchable[WKingX + i][WKingY + j]))
-						{
+		for (int i = -1; i <= 1; i++) {
+			for (int j = -1; j <= 1; j++) {
+				if (!(i == 0 && j == 0)) {
+					if (((0 <= WKingX + i) && (WKingX + i < 8)) && ((0 <= WKingY + i) && (WKingY + i < 8))) {
+						if ((board.getPiece(WKingX + i, WKingY + j) == null)
+								&& (!board.p2_catchable[WKingX + i][WKingY + j])) {
 							// 공격 불가능한 지역이 있으면
 							return false;
-						}
-						else if (board.getPiece(WKingX + i, WKingY + j).getColor() != 1) {
+						} else if (board.getPiece(WKingX + i, WKingY + j).getColor() != 1) {
 							// 적군이면 false
 							return false;
 						}
@@ -78,21 +73,16 @@ public class Checker {
 				}
 			}
 		}
-		//player2
-		for (int i = -1; i <= 1; i++) 
-		{
-			for (int j = -1; j <= 1; j++) 
-			{
-				if (!(i == 0 && j == 0)) 
-				{
-					if (((0 <= BKingX + i) && (BKingX + i < 8)) && ((0 <= BKingY + i) && (BKingY + i < 8))) 
-					{
-						if ((board.getPiece(BKingX + i, BKingY + j) == null) && (!board.p1_catchable[BKingX + i][BKingY + j]))
-						{
+		// player2
+		for (int i = -1; i <= 1; i++) {
+			for (int j = -1; j <= 1; j++) {
+				if (!(i == 0 && j == 0)) {
+					if (((0 <= BKingX + i) && (BKingX + i < 8)) && ((0 <= BKingY + i) && (BKingY + i < 8))) {
+						if ((board.getPiece(BKingX + i, BKingY + j) == null)
+								&& (!board.p1_catchable[BKingX + i][BKingY + j])) {
 							// 공격 불가능한 지역이 있으면
 							return false;
-						}
-						else if (board.getPiece(BKingX + i, BKingY + j).getColor() != 3) {
+						} else if (board.getPiece(BKingX + i, BKingY + j).getColor() != 3) {
 							// 적군이면 false
 							return false;
 						}

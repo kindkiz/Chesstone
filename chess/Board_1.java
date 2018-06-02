@@ -20,4 +20,6 @@ public class Board_1 {
 	Piece getPiece(int PieceX, int PieceY) {
 		return board[PieceX][PieceY];
 	}
+	
+	
 }
